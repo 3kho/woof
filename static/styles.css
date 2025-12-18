@@ -1,0 +1,77 @@
+@font-face {
+  font-family: 'paws';
+  src: url('paws.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.paws-font {
+    font-family: "paws", sans-serif;
+}
+
+.centered-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top :50px;
+}
+
+.woof {
+    font-size: 150px;
+    color: #2f1313;
+    margin: 0;
+}
+
+.chewy-regular {
+  font-family: "Chewy", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  font-size: 20px;
+}
+
+body {
+    background-color : #e5cd6c;
+}
+
+.faq-section {
+  margin-top: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.faq-item summary {
+  padding: 10px;
+  background-color: #f9f3b9;
+  user-select: none;
+}
+
+.faq-item summary:hover {
+  background-color: #dbd6a2;
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 15px;
+  background-color: #f9f3b9;
+  font-family: sans-serif;
+  font-size: 15px;
+}
+
+a {
+    color: #87803b;
+}
+
+a:hover {
+    color: #cfcba9;
+}
