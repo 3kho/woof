@@ -75,3 +75,54 @@ a {
 a:hover {
     color: #cfcba9;
 }
+
+/* Paw Mode Button */
+.paw-mode-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: #2f1313;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    z-index: 1000;
+}
+
+.paw-mode-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.paw-mode-btn.active {
+    background-color: #87803b;
+}
+
+.paw-mode-btn img {
+    width: 35px;
+    height: 35px;
+}
+
+/* Paw animation elements */
+.paw-element {
+    position: fixed;
+    width: 200px;
+    height: 1000px;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.paw-print {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    z-index: 998;
+    transform: translate(-50%, -50%);
+}

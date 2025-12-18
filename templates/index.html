@@ -37,5 +37,114 @@
              <p class="chewy-regular">Once you've submitted your project and it's been verified to be good practice, we'll send your dog plushie to the address you provide, if you're in the US. Or if preffered or you live internationally, we'll send out a digital credit card with $25 that you can use to buy a dog plushie.</p>
          </details>
      </div>
+
+     <!-- Paw Mode Button -->
+     <button class="paw-mode-btn" id="pawModeBtn" title="Toggle Paw Mode">
+         <img src="{{ url_for('static', filename='images/paw_print_1.png') }}" alt="Paw">
+     </button>
+
+     <script>
+         const pawModeBtn = document.getElementById('pawModeBtn');
+         let pawModeActive = false;
+         const pawImages = [
+             "{{ url_for('static', filename='images/paw_1.png') }}",
+             "{{ url_for('static', filename='images/paw_2.png') }}",
+             "{{ url_for('static', filename='images/paw_3.png') }}",
+             "{{ url_for('static', filename='images/paw_4.png') }}",
+             "{{ url_for('static', filename='images/paw_5.png') }}",
+             "{{ url_for('static', filename='images/paw_6.png') }}",
+             "{{ url_for('static', filename='images/paw_7.png') }}",
+             "{{ url_for('static', filename='images/paw_8.png') }}",
+             "{{ url_for('static', filename='images/paw_9.png') }}"
+         ];
+         const pawPrintImage = "{{ url_for('static', filename='images/paw_print_1.png') }}";
+
+         pawModeBtn.addEventListener('click', (e) => {
+             e.stopPropagation();
+             pawModeActive = !pawModeActive;
+             pawModeBtn.classList.toggle('active', pawModeActive);
+         });
+
+         document.addEventListener('click', (e) => {
+             if (!pawModeActive) return;
+             if (e.target === pawModeBtn || pawModeBtn.contains(e.target)) return;
+
+             const clickX = e.clientX;
+             const clickY = e.clientY;
+
+             // Determine which edge to come from (closest edge)
+             const distTop = clickY;
+             const distBottom = window.innerHeight - clickY;
+             const distLeft = clickX;
+             const distRight = window.innerWidth - clickX;
+             const minDist = Math.min(distTop, distBottom, distLeft, distRight);
+
+             let startX, startY, rotation;
+             if (minDist === distTop) {
+                 startX = clickX;
+                 startY = -100;
+                 rotation = 180;
+             } else if (minDist === distBottom) {
+                 startX = clickX;
+                 startY = window.innerHeight + 100;
+                 rotation = 0;
+             } else if (minDist === distLeft) {
+                 startX = -100;
+                 startY = clickY;
+                 rotation = 90;
+             } else {
+                 startX = window.innerWidth + 100;
+                 startY = clickY;
+                 rotation = -90;
+             }
+
+             // Calculate distance from edge to click point
+             const distance = Math.sqrt(Math.pow(clickX - startX, 2) + Math.pow(clickY - startY, 2));
+             const pawHeight = distance + 150;
+
+             // Create paw element
+             const paw = document.createElement('img');
+             paw.src = pawImages[Math.floor(Math.random() * pawImages.length)];
+             paw.className = 'paw-element';
+             paw.style.width = '200px';
+             paw.style.height = pawHeight + 'px';
+             paw.style.left = startX + 'px';
+             paw.style.top = startY + 'px';
+             paw.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+             paw.style.transition = 'left 0.3s ease-out, top 0.3s ease-out';
+             document.body.appendChild(paw);
+
+             // Animate paw to click position
+             setTimeout(() => {
+                 paw.style.left = clickX + 'px';
+                 paw.style.top = clickY + 'px';
+             }, 10);
+
+             // After reaching destination, leave paw print and retract
+             setTimeout(() => {
+                 // Create paw print
+                 const print = document.createElement('img');
+                 print.src = pawPrintImage;
+                 print.className = 'paw-print';
+                 print.style.left = clickX + 'px';
+                 print.style.top = clickY + 'px';
+                 print.style.opacity = '0.8';
+                 document.body.appendChild(print);
+
+                 // Fade out paw print after some time
+                 setTimeout(() => {
+                     print.style.transition = 'opacity 2s ease-out';
+                     print.style.opacity = '0';
+                     setTimeout(() => print.remove(), 2000);
+                 }, 3000);
+
+                 // Retract paw
+                 paw.style.left = startX + 'px';
+                 paw.style.top = startY + 'px';
+
+                 setTimeout(() => paw.remove(), 300);
+             }, 350);
+         });
+     </script>
      </body>
      </html>
