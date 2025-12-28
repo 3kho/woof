@@ -1,10 +1,9 @@
 # Woof YSWS
-Woof YSWS is a YSWS where you code a dog themed website for 5 hours and get a dog plushie!
+Woof YSWS is a YSWS where you code a dog themed website for 5 hours and get a dog plushie! We are sponsored by Hack Club
 
-[![Status: Work in Progress](https://img.shields.io/badge/status-work%20in%20progress-yellow)](#)
+[![Status: Active](https://img.shields.io/badge/Status:-Active-green)](#)
 
-> **Note:** This project is currently a work in progress. Features and documentation may change.
-[woof-mu.vercel.app](https://woof-mu.vercel.app)
+> **Note:** Have a look at the website at [woof.hackclub.com](https://woof.hackclub.com)
 
 ## Installation
 First make a virtual environment:
@@ -34,6 +33,3 @@ for dev:
 ```commandline
 flask --app main run --debug
 ```
-
-for production:
-you need to use gunicorn, which I will set up later
