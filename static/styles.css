@@ -159,7 +159,22 @@ a:hover {
   padding: 20px;
   display: block;
 }
+.hclink-btn {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
 
+.hc-image {
+  transition: transform 0.2s ease;
+}
+
+.hc-image:hover {
+    transform: scale(1.1);
+}
 /* Paw Mode Button */
 .paw-mode-btn {
     position: fixed;
