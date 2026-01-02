@@ -169,7 +169,6 @@ a:hover {
 }
 
 .hc-image {
-  cursor: pointer;
   transition: transform 0.2s ease;
 }
 
