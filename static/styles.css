@@ -46,6 +46,7 @@
 .rsvp-link {
     display: inline-block;
     background-color: transparent;
+    cursor: pointer;
 }
 
 .rsvp-image {
